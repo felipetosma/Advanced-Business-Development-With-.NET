@@ -4,8 +4,9 @@
     "\\TODOList",
     "\\TODOList\\Controllers",
     "\\TODOList\\Views",
-    "\\TODOList\\Views\\Objetivo"
+    "\\TODOList\\Views\\Objetivo",
+    "\\TODOList\\Views\\Todo"
   ],
-  "SelectedNode": "\\TODOList\\Views\\Objetivo\\Edit.cshtml",
+  "SelectedNode": "\\TODOList\\Views\\Todo\\Index.cshtml",
   "PreviewInSolutionExplorer": false
 }

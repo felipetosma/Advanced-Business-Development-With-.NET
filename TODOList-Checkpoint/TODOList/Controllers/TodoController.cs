@@ -31,5 +31,22 @@ namespace TODOList.Controllers
 
             return View();
         }
+
+        public IActionResult AddTodo()
+        {
+            return View();
+        }
+
+        public IActionResult UpdateTodo(int id)
+        {
+            var find = _context.TODOs.FirstOrDefault(x => x.Id == id);
+            if (find == null) return RedirectToAction("Index");
+
+            find.feto = true;
+            _context.TODOs.Update(find);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+
+        }
     }
 }
