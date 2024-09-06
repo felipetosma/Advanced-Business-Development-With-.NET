@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = "Lista de TODOs";
+
+    var TODOs = ViewData["AllTodos"] as List<TODO>; // Fazendo cast seguro
+}
+
+<h1 style="color: #b30000; font-family: 'Lucida Sans'; text-align: center;">Bem-vindo(a) ao TODO List</h1>
+
+<p style="text-align: center;">
+    <a class="btn" asp-controller="Objetivo" asp-action="Index" style="background-color: #b30000; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; border: none;">Ver Objetivos</a>
+</p>
+
+<div style="display: flex; flex-direction: row; width: 100vw; flex-wrap: wrap; gap: 15px; justify-content: center; background-color: #f9f3f3; padding: 20px;">
+    @{
+        if (TODOs != null && TODOs.Any()) // Verifica se TODOs não está nulo e se contém itens
+        {
+            foreach (var todo in TODOs)
+            {
+                <div class="card" style="width: 18rem; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); transition: transform 0.3s, box-shadow 0.3s; background-color: #ffe5e5; border: 1px solid #b30000;">
+                    <img src="https://lh3.googleusercontent.com/proxy/562me2SdGu8FRjCAw_ZTl9dI_cAkig7q8ei-QVqN-sdlTdTDYdBqXnyPRjXpSesf4w4r0KslDwFLFSjsYTWwIZrjPX2-h7Uv6yKQ1H4G" class="card-img-top" alt="Imagem da tarefa" style="height: 180px; object-fit: cover;">
+                    <div class="card-body" style="padding: 15px;">
+                        <h5 class="card-title" style="font-weight: bold; color: #b30000;">@todo.Tarefa</h5>
+                        <p class="card-text">@todo.Descricao</p>
+                        @{
+                            if (todo.feto)
+                            {
+                                <p class="card-text" style="color: green; font-weight: bold;">Tarefa feita</p>
+                            }
+                            else
+                            {
+                                <p class="card-text" style="color: red; font-weight: bold;">Tarefa não feita</p>
+                            }
+                        }
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <p style="color: #b30000; font-family: Arial, sans-serif; text-align: center;">Não há TODOs disponíveis no momento.</p>
+        }
+    }
+</div>
+
+<style>
+    body {
+        background-color: #f9f3f3;
+    }
+
+    hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 16px rgba(179, 0, 0, 0.2);
+    }
+</style>
+
+
